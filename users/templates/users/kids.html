@@ -1,0 +1,55 @@
+
+{% if user.is_authenticated %}
+    
+{% if form_errors %}
+    <div class="error-messages">
+        <strong>Errors:</strong>
+        {{ form_errors }}
+    </div>
+{% endif %}
+<h2>Upload an Image</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+{% endif %}
+
+{% load static %}
+<h1 style="text-align: center;">WELCOME TO KIDS PAGE</h1>
+<div class="image-container">
+
+{% for image in images %}
+    <img src="{{ image.image_file.url }}" alt="{{ image.description }}">
+<p>{{ image.description }}</p>
+{% endfor %}
+</div>
+
+
+
+
+
+
+
+<a href="https://www.amazon.in/s?k=kids+wear+kids&adgrpid=59197782476&ext_vrnc=hi&hvadid=380039483009&hvdev=c&hvlocphy=9147398&hvnetw=g&hvqmt=b&hvrand=17733179295727598641&hvtargid=kwd-423528039286&hydadcr=23839_1952101&tag=googinhydr1-21&ref=pd_sl_696nu3ihlg_b"> amazon kids wear </a>
+
+    {% if not user.is_authenticated %}
+        <h2 style="text-align: center; margin-top: 50px;">Best Shopping Sites</h2>
+        <ul>
+            <li><a href="https://www.childrensplace.com/us/store-locator?cid=Search-_-GOOGLE-_-Generic-_-%2Bchildrens%20%2Bstores_b-_-G_TCP_US_NonBrand_Search_Store&gclid=Cj0KCQjw0IGnBhDUARIsAMwFDLmd1Lg7S_R-Lx6jBg5Ewopx3ER5zN8Lmg-jPNK12ZudRiuLhUoi27MaAtGHEALw_wcB" target="_blank">childrens place</a></li>
+        <li><a href="https://www.vogue.com/article/best-kids-clothing-stores-online768773&Cvosrc=Affiliate.Impact.Impact_Prospecting_&Affiliate_id=10078&click_id=xFlzQbz5vxyPTP43vTRjCQKBUkF3G2SdUQkDzM0&irgwc=1" target="_blank">vogue</a></li>
+        <li><a href="https://www.cabelas.com/l/mens-shirts-tops" target="_blank">cabela</a></li>
+    </ul>
+{% endif %}
+<!-- Home Link -->
+
+<div class="home-link-container">
+    <a href="{% url 'home' %}">Go to Home</a>
+</div>
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

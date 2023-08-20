@@ -1,0 +1,13 @@
+{% extends 'users/login.html' %}
+{% load static %}
+
+{% block content %}
+    <br>
+    <div class="alert alert-success" role="alert">
+        <h2 style="text-align: center;">Logged out!</h2>
+    </div>
+
+    <h3>Login again?</h3>
+	<h3>Don't have an account? <a href="{% url 'register' %}">Signup here</a></h3>
+	<h3>Already have account? <a href="{% url 'login' %}">Login here</a></h3>
+{% endblock content %}

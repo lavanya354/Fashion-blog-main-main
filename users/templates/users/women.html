@@ -1,0 +1,43 @@
+
+{% if user.is_authenticated %}
+    <h2>Upload an Image</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+{% endif %}
+
+{% load static %}
+<h1 style="text-align: center;">WELCOME TO WOMENS PAGE</h1>
+<div class="image-container">
+
+
+{% for image in images %}
+    <img src="{{ image.image_file.url }}" alt="{{ image.description }}">
+<p>{{ image.description }}</p>
+{% endfor %}
+</div>
+
+
+
+{% if not user.is_authenticated %}
+    <h2 style="text-align: center; margin-top: 50px;">Best Shopping Sites</h2>
+    <ul>
+        <li><a href="https://www.renttherunway.com/?utm_source=wordseed&utm_medium=cpc&utm_campaign=aa327a67-0144-4be1-9f08-0114f8582024" target="_blank">Rent the Runway</a></li>
+        <li><a href="https://www.fairindigo.com/?utm_source=wordseed&utm_medium=cpc&utm_campaign=d832ad55-093d-4d9e-878a-12fbc865906f" target="_blank">fairindigo</a></li>
+        <li><a href="https://www.senreve.com/?utm_source=wordseed&utm_medium=cpc&utm_campaign=58371ee3-d960-430d-9c81-a59c04379179" target="_blank">senreve</a></li>
+    </ul>
+{% endif %}
+<!-- Back Button -->
+
+<div class="home-link-container">
+    <a href="{% url 'home' %}">Go to Home</a>
+</div>
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

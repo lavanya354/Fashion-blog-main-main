@@ -1,0 +1,48 @@
+
+{% if user.is_authenticated %}
+    <h2>Upload an Image</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+{% endif %}
+
+{% load static %}
+<h1 style="text-align: center;">WELCOME TO MEN PAGE</h1>
+<div class="image-container">
+
+{% for image in images %}
+    <img src="{{ image.image_file.url }}" alt="{{ image.description }}">
+<p>{{ image.description }}</p>
+{% endfor %}
+</div>
+
+
+
+
+
+
+
+
+
+    {% if not user.is_authenticated %}
+        <h2 style="text-align: center; margin-top: 50px;">Best Shopping Sites</h2>
+        <ul>
+            <li><a href="https://www.arket.com/en/men.html" target="_blank">Arket</a></li>
+        <li><a href="https://bonobos.com/?irclickid=xFlzQbz5vxyPTP43vTRjCQKBUkF3G2SdUQkDzM0&utm_medium=Affiliate&utm_source=Impact&utm_campaign=Impact_Prospecting_10078-768773&Cvosrc=Affiliate.Impact.Impact_Prospecting_&Affiliate_id=10078&click_id=xFlzQbz5vxyPTP43vTRjCQKBUkF3G2SdUQkDzM0&irgwc=1" target="_blank">bonbos</a></li>
+        <li><a href="https://www.cabelas.com/l/mens-shirts-tops" target="_blank">cabela</a></li>
+    </ul>
+{% endif %}
+<!-- Home Link -->
+
+<div class="home-link-container">
+    <a href="{% url 'home' %}">Go to Home</a>
+</div>
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

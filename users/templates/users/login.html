@@ -1,0 +1,26 @@
+{% load static %}
+<h3>LOGIN</h3>
+<link rel="stylesheet" href="{% static 'mystyle.css' %}">
+<form action="" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+		<div class="mycard">
+        <p>{{ field.label }}: <br> {{ field }}</p>
+		</div>
+    {% endfor %}
+	<div class="mycard1">
+    <button type="submit">Login</button>
+	</div>
+</form>
+
+<h3>Don't have an account? <a href="{% url 'register' %}">Signup here</a></h3>
+<!-- Back Button -->
+<div class="back-button-container">
+    <button onclick="goBack()">Back</button>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
